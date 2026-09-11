@@ -1,0 +1,11 @@
+---
+- name: 'ASPNetMVC4 playbook'
+  hosts: default
+  vars: 
+    ansible_python_interpreter: "/usr/bin/python2.7"
+
+  tasks:
+    - name: Installing ASPNetMVC4
+      win_chocolatey:
+        name: aspnetmvc4.install
+        state: present

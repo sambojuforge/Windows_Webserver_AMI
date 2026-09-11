@@ -1,0 +1,9 @@
+---
+- name: 'Install Windows WebServer Feature playbook'
+  hosts: default
+  vars: 
+    ansible_python_interpreter: "/usr/bin/python2.7"
+
+  tasks:
+    - name: Installing Windows WebServer Feature
+      win_shell: 'Install-WindowsFeature -Name web-server -IncludeAllSubFeature'

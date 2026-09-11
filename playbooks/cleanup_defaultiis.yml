@@ -1,0 +1,35 @@
+---
+- name: 'Cleanup default site and app pools in IIS playbook'
+  hosts: default
+  vars: 
+    ansible_python_interpreter: "/usr/bin/python2.7"
+
+  tasks:
+    - name: Importing WebAdministration Module
+      win_shell: 'Import-Module WebAdministration'
+
+    - name: Removing default websites from IIS
+      win_shell: 'Get-Website | Remove-Website'
+
+    - name: Removing default app pools from IIS
+      win_shell: 'Get-IISAppPool | Remove-WebAppPool'
+
+    - name: Remove the wwwroot folder
+      win_file:
+        path: C:\inetpub\wwwroot\
+        state: absent
+
+    - name: Create the wwwroot folder
+      win_file:
+        path: C:\inetpub\wwwroot\
+        state: directory        
+
+    - name: Creating web.root directory
+      win_file:
+        path: C:\web.root
+        state: directory
+
+    - name: Creating web.logs directory
+      win_file:
+        path: C:\web.logs
+        state: directory

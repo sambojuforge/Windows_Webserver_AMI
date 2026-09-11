@@ -1,0 +1,12 @@
+---
+- name: 'URL Rewrite Module playbook'
+  hosts: default
+  vars: 
+    ansible_python_interpreter: "/usr/bin/python2.7"
+
+  tasks:
+    - name: Installing URL Rewrite Module version 2.1.20171010
+      win_chocolatey:
+        name: urlrewrite
+        version: '2.1.20171010'
+        state: present

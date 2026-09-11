@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Packer output
+*.txt
+output/
+output-*/
+packer_cache/
+*.log
+
+# Environment / secrets (never commit these)
+.env
+*.env
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo

@@ -1,0 +1,27 @@
+---
+- name: 'Webdeploy playbook'
+  hosts: default
+  vars: 
+    ansible_python_interpreter: "/usr/bin/python2.7"
+
+  tasks:
+    - name: Creating a temp directory
+      win_file:
+        path: C:\temp
+        state: directory
+
+    - name: Downloading Microsoft Web Deploy
+      win_get_url: 
+        url: http://artifactory.for.dealer-fx.com/artifactory/dev-binaries-local/WebDeploy_amd64_en-US.msi
+        dest: C:\temp\WebDeploy_amd64_en-US.msi
+
+    - name: Installing Microsoft Web Deploy
+      win_package: 
+        path: C:\temp\WebDeploy_amd64_en-US.msi
+        state: present 
+      
+    - name: Removing the temp directory
+      win_file: 
+        path: C:\temp
+        state: absent
+ 
